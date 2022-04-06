@@ -1,18 +1,18 @@
 name: skill-tree integrity check
 on:
   pull_request:
-    types: [ready_for_review]
+    types: 
+      - ready_for_review
+      - push
+    branches:
+      - main
+
 jobs:
   tree-integrity-checker:
     runs-on: ubuntu-20.04
+    env:
+      ghContext: ${{ github }}
     steps:
-        - name: Verificando o repositório do Git
-          uses: actions/checkout@v2
-
-        - name: Instalando o Node
-          uses: actions/setup-node@v1
-          with:
-            node-version: 14
+        - name: Verificando metadados do GH
+        - run: echo "$ghContext"
         
-        - name: Verificando teste
-          run: npm test
