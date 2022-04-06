@@ -1,7 +1,12 @@
 name: skill-tree integrity check
 on:
   pull_request:
-    types: [ready_for_review, opened, reopened]
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - main
 
 jobs:
   tree-integrity-checker:
